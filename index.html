@@ -34,6 +34,11 @@ body {
 .page { max-width: 640px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
 h1 { font-size: 1.4rem; font-weight: 700; margin: 0 0 0.6rem; }
 p.lede { color: var(--muted); margin: 0 0 2rem; font-size: 0.95rem; }
+h2.category {
+  font-size: 0.82rem; font-weight: 700; color: var(--accent); letter-spacing: 0.04em;
+  margin: 2rem 0 0.8rem; text-transform: uppercase;
+}
+h2.category:first-of-type { margin-top: 0; }
 ul.tools { list-style: none; margin: 0; padding: 0; }
 ul.tools li {
   border: 1px solid var(--line); border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 0.8rem;
@@ -49,6 +54,7 @@ footer { margin-top: 2.5rem; font-size: 0.78rem; color: var(--muted); }
 <div class="page">
   <h1>ツール一覧</h1>
   <p class="lede">日々の困りごとを解決する、無料のWebツールを作っています。</p>
+  <h2 class="category">フリマ</h2>
   <ul class="tools">
     <li>
       <a href="/furima-hikaku-keisan/">フリマ手数料計算・比較ツール</a>
@@ -62,13 +68,21 @@ footer { margin-top: 2.5rem; font-size: 0.78rem; color: var(--muted); }
       <a href="/furima-tedori-simulator/">フリマ手取りシミュレーター</a>
       <p>手数料と最安の発送方法をまとめて計算。目標の手取り額から出品価格を逆算することもできます。</p>
     </li>
-    <li>
-      <a href="/yukyu-hiyou-keisan/">有給休暇 付与日数計算ツール</a>
-      <p>入社日と週の所定労働日数から、有給休暇の付与日数・次回の付与日・残日数の目安が分かります。</p>
-    </li>
+  </ul>
+
+  <h2 class="category">お金</h2>
+  <ul class="tools">
     <li>
       <a href="/revolving-risoku-keisan/">リボ払い・分割払い 実質利息計算ツール</a>
       <p>残高・毎月の返済額・実質年率から、完済までの期間と支払う利息の総額が分かります。</p>
+    </li>
+  </ul>
+
+  <h2 class="category">働き方・労務</h2>
+  <ul class="tools">
+    <li>
+      <a href="/yukyu-hiyou-keisan/">有給休暇 付与日数計算ツール</a>
+      <p>入社日と週の所定労働日数から、有給休暇の付与日数・次回の付与日・残日数の目安が分かります。</p>
     </li>
     <li>
       <a href="/taishoku-yukyu-keisan/">退職時の有給消化シミュレーター</a>
