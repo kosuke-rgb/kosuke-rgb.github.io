@@ -58,6 +58,12 @@ ul.tools li {
 ul.tools a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 1.02rem; }
 ul.tools a:hover { color: var(--accent); }
 ul.tools p { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.88rem; }
+.quick-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.quick-nav a {
+  font-size: 0.78rem; font-weight: 700; color: var(--accent); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.9rem;
+}
+.quick-nav a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .ad-slot { margin: 2.5rem 0; text-align: center; min-height: 100px; }
 footer { margin-top: 2.5rem; font-size: 0.78rem; color: var(--muted); }
 footer a { color: var(--accent); }
@@ -67,7 +73,12 @@ footer a { color: var(--accent); }
 <div class="page">
   <h1>webtools-labs</h1>
   <p class="lede">フリマ・お金・働き方に関する「ちょっと計算したい」を解決する、登録不要の無料ツール集です。</p>
-  <h2 class="category">フリマ</h2>
+  <nav class="quick-nav">
+    <a href="#category-furima">フリマ</a>
+    <a href="#category-money">お金</a>
+    <a href="#category-work">働き方・労務</a>
+  </nav>
+  <h2 class="category" id="category-furima">フリマ</h2>
   <ul class="tools">
     <li>
       <a href="/furima-hikaku-keisan/">フリマ手数料計算・比較ツール</a>
@@ -83,7 +94,7 @@ footer a { color: var(--accent); }
     </li>
   </ul>
 
-  <h2 class="category">お金</h2>
+  <h2 class="category" id="category-money">お金</h2>
   <ul class="tools">
     <li>
       <a href="/revolving-risoku-keisan/">リボ払い・分割払い 実質利息計算ツール</a>
@@ -119,7 +130,7 @@ footer a { color: var(--accent); }
     </li>
   </ul>
 
-  <h2 class="category">働き方・労務</h2>
+  <h2 class="category" id="category-work">働き方・労務</h2>
   <ul class="tools">
     <li>
       <a href="/yukyu-hiyou-keisan/">有給休暇 付与日数計算ツール</a>
