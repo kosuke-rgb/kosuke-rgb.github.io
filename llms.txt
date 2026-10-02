@@ -1,0 +1,59 @@
+# webtools-labs
+
+> 給料・扶養・税金・退職・フリマなどの身近な計算を、登録なし・無料で行える日本語の計算ツール集です。各ツールは国税庁・日本年金機構・厚生労働省・協会けんぽなどの公式情報をもとに作成し、ページ内に「最終確認日」と出典を記載しています。税・社会保険の金額は、特に断りがない限り2026年（令和8年分）の収入を前提とした目安です。
+
+サイト: https://webtools-labs.com/
+運営者情報: https://webtools-labs.com/about/
+
+## 2026年（令和8年分）の主な基準額（給与収入のみの場合の目安）
+
+- 本人に住民税がかかり始める: 給与収入119万円超（令和9年度の住民税。給与所得控除の最低保障額74万円＋非課税限度額45万円。自治体・扶養状況により異なる）
+- 社会保険（健康保険）の扶養から外れる: 年収130万円以上。19歳以上23歳未満（配偶者を除く）は150万円以上（2025年10月から）
+- 親の扶養控除・配偶者控除の対象: 合計所得金額62万円以下＝給与収入136万円以下
+- 19〜22歳の子の特定親族特別控除: 給与収入159万円まで親の控除63万円、197万円超でゼロ
+- 配偶者特別控除: 給与収入169万円まで38万円、約207万円超でゼロ
+- 本人に所得税がかかり始める: 給与収入178万円超（基礎控除104万円＋給与所得控除74万円）
+- 社会保険加入の「106万円の壁」（賃金要件）は2026年10月1日に撤廃。従業員51人以上の勤務先では週20時間以上で加入（昼間の学生は原則対象外）
+
+## 給料・手取り
+
+- [手取り計算ツール](https://webtools-labs.com/tedori-keisan/): 額面年収から社会保険料・所得税・住民税を引いた手取り年収・月収の目安
+- [手取りから逆算する年収計算ツール](https://webtools-labs.com/tedori-gyakusan-keisan/): 欲しい手取り額に必要な額面年収を逆算
+- [賞与手取り計算ツール](https://webtools-labs.com/bonus-tedori-keisan/): ボーナスの額面から社会保険料と源泉所得税を引いた手取り額
+- [給与の社会保険料 内訳計算ツール](https://webtools-labs.com/shakaihoken-uchiwake-keisan/): 健康保険料・厚生年金保険料・雇用保険料の内訳
+- [住民税計算ツール](https://webtools-labs.com/juminzei-keisan/): 前年の年収から住民税（所得割・均等割）の目安
+- [残業代計算ツール](https://webtools-labs.com/zangyodai-keisan/): 時間外・深夜・休日労働の割増賃金
+- [通勤手当の非課税限度額計算ツール](https://webtools-labs.com/tsukin-teate-keisan/): 通勤手当の非課税額と課税される超過分
+- [有給休暇 付与日数計算ツール](https://webtools-labs.com/yukyu-hiyou-keisan/): 入社日と週の所定労働日数から有給休暇の付与日数
+
+## バイト・パート・扶養
+
+- [時給から年収・月収を計算](https://webtools-labs.com/jikyu-nenshu-keisan/): 時給と勤務時間から月収・年収と、扶養の壁ごとの月の上限労働時間
+- [扶養の壁チェッカー](https://webtools-labs.com/fuyou-no-kabe-keisan/): 年収から、住民税・所得税・社会保険・配偶者控除などの壁をどこまで超えているか判定（学生・配偶者・年齢別）
+- [特定親族特別控除 計算ツール](https://webtools-labs.com/tokutei-shinzoku-keisan/): 19〜22歳の子のバイト年収から、親が受けられる特定扶養控除・特定親族特別控除の額（令和8年分・令和7年分）
+- [最低賃金チェッカー](https://webtools-labs.com/saitei-chingin-checker/): 2026年度の都道府県別最低賃金・引き上げ額・発効日
+
+## 税金・年末調整・確定申告
+
+- [年末調整 還付金シミュレーター](https://webtools-labs.com/nencho-kanpu-keisan/): 生命保険料控除・地震保険料控除・扶養状況から年末調整の還付額の目安
+- [医療費控除 計算ツール](https://webtools-labs.com/iryouhi-koujo-keisan/): 医療費控除額と所得税・住民税の還付額の目安
+- [iDeCo 節税シミュレーター](https://webtools-labs.com/ideco-setsuzei-keisan/): 年収・職業区分・掛金からiDeCoの節税額
+- [副業の確定申告 要否チェッカー](https://webtools-labs.com/fukugyo-shinkoku-keisan/): 副業の「20万円ルール」にもとづく確定申告の要否
+- [フリマの確定申告 要否チェッカー](https://webtools-labs.com/frima-kakuteishinkoku-checker/): メルカリ・ラクマの売上で確定申告が必要かの判定
+
+## 退職・休職・出産
+
+- [退職時の有給消化シミュレーター](https://webtools-labs.com/taishoku-yukyu-keisan/): 退職日と残りの有給日数から最終出社日を逆算
+- [退職金の税金計算ツール](https://webtools-labs.com/taishokukin-zei-keisan/): 退職所得控除をふまえた退職金の手取り額
+- [退職後の健康保険 比較シミュレーター](https://webtools-labs.com/taishokugo-hoken-hikaku-keisan/): 国民健康保険と任意継続の保険料を月額で比較
+- [失業保険（基本手当）シミュレーター](https://webtools-labs.com/shitsugyo-hoken-keisan/): 基本手当の日額・総額の目安
+- [傷病手当金計算ツール](https://webtools-labs.com/shoubyou-teate-keisan/): 傷病手当金の日額・合計額の目安
+- [産休・育休手当金シミュレーター](https://webtools-labs.com/sankyu-ikuji-teate-keisan/): 出産手当金と育児休業給付金の目安
+
+## フリマ・暮らし
+
+- [フリマ手数料計算・比較ツール](https://webtools-labs.com/frima-tesuryo-hikaku/): メルカリ・ラクマ・Yahoo!フリマの手取り比較
+- [フリマ配送方法・送料比較ツール](https://webtools-labs.com/frima-hasso-hikaku/): 一番安い発送方法の比較
+- [フリマ手取りシミュレーター](https://webtools-labs.com/frima-tedori-simulator/): 手数料と送料を引いた手取り、出品価格の逆算
+- [リボ払い・分割払い 実質利息計算ツール](https://webtools-labs.com/revolving-risoku-keisan/): 完済までの期間と利息総額
+- [郵便物の切手代早見表](https://webtools-labs.com/yubin-kitte-keisan/): 重さ別の定形・定形外・レターパック料金
