@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【デモ】ハウスクリーニング料金シミュレーター</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="サイトに設置できる料金シミュレーターのデモです（架空の店舗）。">
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --ink: #1f2933;
+  --muted: #6b7785;
+  --line: #e2e6ea;
+  --accent: #2563eb;
+  --accent-soft: #eef4ff;
+  --ok: #0f766e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--surface); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.7;
+}
+.demo-bar {
+  background: #111827; color: #fff; font-size: 0.8rem; text-align: center; padding: 0.5rem 1rem;
+}
+.demo-bar a { color: #93c5fd; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+h1 { font-size: clamp(1.3rem, 4vw, 1.6rem); margin: 0 0 0.4rem; }
+.lede { color: var(--muted); margin: 0 0 1.5rem; font-size: 0.92rem; }
+.card { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem; }
+.card h2 { font-size: 1rem; margin: 0 0 0.8rem; }
+.step { display: inline-flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--accent); color: #fff; font-size: 0.8rem; margin-right: 0.4rem; }
+.menu-row { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.7rem 0; border-top: 1px solid var(--line); }
+.menu-row:first-of-type { border-top: none; }
+.menu-name { font-weight: 700; font-size: 0.95rem; }
+.menu-price { color: var(--muted); font-size: 0.82rem; }
+.qty { display: flex; align-items: center; gap: 0.4rem; }
+.qty button {
+  width: 2.2rem; height: 2.2rem; border-radius: 50%; border: 1px solid var(--line); background: var(--bg);
+  font-size: 1.1rem; cursor: pointer; color: var(--ink);
+}
+.qty button:hover { border-color: var(--accent); color: var(--accent); }
+.qty span { min-width: 1.6rem; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+label.opt { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.6rem 0; border-top: 1px solid var(--line); cursor: pointer; }
+label.opt:first-of-type { border-top: none; }
+label.opt input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
+select { width: 100%; font-family: inherit; font-size: 1rem; padding: 0.6rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+.result { position: sticky; bottom: 0.5rem; background: var(--bg); border: 2px solid var(--accent); border-radius: 12px; padding: 0.7rem 1rem; box-shadow: 0 -4px 16px rgba(0,0,0,0.06); }
+.result-top { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; }
+.total-label { font-size: 0.82rem; color: var(--muted); }
+.total { font-size: 1.6rem; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--accent); }
+.total small { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+.badge { display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 700; border-radius: 999px; padding: 0.15rem 0.7rem; margin-top: 0.3rem; }
+details.breakdown { margin-top: 0.6rem; font-size: 0.86rem; }
+details.breakdown summary { cursor: pointer; color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+td { padding: 0.35rem 0; border-bottom: 1px solid var(--line); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.cta { display: inline-block; text-align: center; background: var(--ok); color: #fff; text-decoration: none; font-weight: 700; border-radius: 999px; padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+.note { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
+.empty { color: var(--muted); font-size: 0.88rem; }
+</style>
+</head>
+<body>
+<div class="demo-bar">これは料金シミュレーター制作の<strong>デモ</strong>です（店舗・料金はすべて架空）。 制作者: <a href="https://webtools-labs.com/">webtools-labs</a></div>
+<div class="wrap">
+  <h1>おそうじ工房サンプル 料金シミュレーター</h1>
+  <p class="lede">ご希望の場所とオプションを選ぶだけで、お見積りの目安がその場で分かります。</p>
+
+  <section class="card">
+    <h2><span class="step">1</span>クリーニングする場所を選ぶ</h2>
+    <div id="menuList"></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">2</span>オプションを選ぶ</h2>
+    <div id="optionList"></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">3</span>お住まいのエリア</h2>
+    <select id="area"></select>
+  </section>
+
+  <div class="result" aria-live="polite">
+    <div class="result-top">
+      <div>
+        <div class="total-label">お見積り（税込）</div>
+        <div class="total" id="total">0円</div>
+      </div>
+      <a class="cta" href="#" id="ctaBtn">この内容で問い合わせる</a>
+    </div>
+    <div id="discountBadge"></div>
+    <details class="breakdown">
+      <summary>内訳を見る</summary>
+      <table><tbody id="breakdown"></tbody></table>
+    </details>
+    <p class="note" id="ctaNote" hidden>デモのため、実際の問い合わせはできません。導入時は、見積り内容をそのままLINE・メール・予約フォームに送れるようにできます。</p>
+  </div>
+
+  <p class="note">※表示金額は目安です。汚れの状態や作業環境によって変わる場合があります（デモ用の架空の料金です）。</p>
+</div>
+
+<script>
+// ===== 設定（料金表）: 導入時はここを書き換えるだけで、お店の料金に合わせられます =====
+var CONFIG = {
+  taxRate: 0.10,
+  pricesIncludeTax: false,
+  menus: [
+    { id: 'aircon', name: 'エアコン（壁掛け）', price: 9000, unit: '台' },
+    { id: 'kitchen', name: 'キッチン', price: 15000, unit: '箇所' },
+    { id: 'bath', name: '浴室', price: 14000, unit: '箇所' },
+    { id: 'toilet', name: 'トイレ', price: 7000, unit: '箇所' },
+    { id: 'washroom', name: '洗面所', price: 6000, unit: '箇所' },
+    { id: 'range', name: 'レンジフード', price: 13000, unit: '台' }
+  ],
+  options: [
+    { id: 'antimold', name: '防カビコート（浴室）', price: 3000, requires: 'bath' },
+    { id: 'eco', name: 'エコ洗剤に変更', price: 1500 },
+    { id: 'outdoor', name: 'エアコン室外機の洗浄', price: 4000, perUnitOf: 'aircon' }
+  ],
+  areas: [
+    { name: '市内（出張費無料）', fee: 0 },
+    { name: '隣接エリア', fee: 1500 },
+    { name: 'その他エリア', fee: 3000 }
+  ],
+  // セット割: 選んだ場所の合計数が minItems 以上なら、場所の料金から rate 割引
+  setDiscount: { minItems: 3, rate: 0.10, label: '3箇所以上で10%OFF' }
+};
+// ===== 設定ここまで =====
+
+(function () {
+  var qty = {};
+  CONFIG.menus.forEach(function (m) { qty[m.id] = 0; });
+  function yen(n) { return Math.round(n).toLocaleString('ja-JP') + '円'; }
+
+  var menuList = document.getElementById('menuList');
+  menuList.innerHTML = CONFIG.menus.map(function (m) {
+    return '<div class="menu-row"><div><div class="menu-name">' + m.name + '</div><div class="menu-price">' + yen(m.price) + ' / ' + m.unit + '（税抜）</div></div>' +
+      '<div class="qty"><button type="button" data-id="' + m.id + '" data-d="-1" aria-label="' + m.name + 'を減らす">−</button><span id="q-' + m.id + '">0</span><button type="button" data-id="' + m.id + '" data-d="1" aria-label="' + m.name + 'を増やす">＋</button></div></div>';
+  }).join('');
+  menuList.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-id]');
+    if (!b) return;
+    var id = b.getAttribute('data-id');
+    qty[id] = Math.max(0, Math.min(9, qty[id] + Number(b.getAttribute('data-d'))));
+    document.getElementById('q-' + id).textContent = qty[id];
+    render();
+  });
+
+  var optionList = document.getElementById('optionList');
+  optionList.innerHTML = CONFIG.options.map(function (o) {
+    return '<label class="opt"><span><span class="menu-name">' + o.name + '</span><br><span class="menu-price">+' + yen(o.price) + (o.perUnitOf ? ' / 台' : '') + '（税抜）</span></span><input type="checkbox" id="opt-' + o.id + '"></label>';
+  }).join('');
+  optionList.addEventListener('change', render);
+
+  var areaSel = document.getElementById('area');
+  areaSel.innerHTML = CONFIG.areas.map(function (a, i) { return '<option value="' + i + '">' + a.name + '</option>'; }).join('');
+  areaSel.addEventListener('change', render);
+
+  function render() {
+    var rows = [], subtotal = 0, itemCount = 0;
+    CONFIG.menus.forEach(function (m) {
+      if (!qty[m.id]) return;
+      var amt = m.price * qty[m.id];
+      subtotal += amt; itemCount += qty[m.id];
+      rows.push([m.name + ' × ' + qty[m.id], amt]);
+    });
+    var discount = 0;
+    if (CONFIG.setDiscount && itemCount >= CONFIG.setDiscount.minItems) {
+      discount = Math.floor(subtotal * CONFIG.setDiscount.rate);
+      rows.push(['セット割（' + CONFIG.setDiscount.label + '）', -discount]);
+    }
+    CONFIG.options.forEach(function (o) {
+      var el = document.getElementById('opt-' + o.id);
+      if (!el.checked) return;
+      if (o.requires && !qty[o.requires]) return; // 対象の場所を選んでいない場合は加算しない
+      var n = o.perUnitOf ? qty[o.perUnitOf] : 1;
+      if (!n) return;
+      rows.push([o.name + (o.perUnitOf ? ' × ' + n : ''), o.price * n]);
+      subtotal += o.price * n;
+    });
+    var area = CONFIG.areas[Number(areaSel.value)];
+    if (itemCount && area.fee) rows.push(['出張費（' + area.name + '）', area.fee]);
+    var beforeTax = itemCount ? subtotal - discount + area.fee : 0;
+    var tax = CONFIG.pricesIncludeTax ? 0 : Math.floor(beforeTax * CONFIG.taxRate);
+    if (itemCount && tax) rows.push(['消費税（' + Math.round(CONFIG.taxRate * 100) + '%）', tax]);
+
+    document.getElementById('total').innerHTML = itemCount ? yen(beforeTax + tax) + ' <small>（税込）</small>' : '0円';
+    document.getElementById('discountBadge').innerHTML = discount ? '<span class="badge">セット割で ' + yen(discount) + ' おトク</span>' :
+      (itemCount && CONFIG.setDiscount ? '<span class="badge">あと' + (CONFIG.setDiscount.minItems - itemCount) + '箇所追加でセット割（' + Math.round(CONFIG.setDiscount.rate * 100) + '%OFF）</span>' : '');
+    document.getElementById('breakdown').innerHTML = itemCount
+      ? rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td class="num">' + (r[1] < 0 ? '−' + yen(-r[1]) : yen(r[1])) + '</td></tr>'; }).join('')
+      : '<tr><td class="empty">場所を1つ以上選ぶと内訳が表示されます</td></tr>';
+  }
+  document.getElementById('ctaBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('ctaNote').hidden = false;
+  });
+  render();
+})();
+</script>
+</body>
+</html>
