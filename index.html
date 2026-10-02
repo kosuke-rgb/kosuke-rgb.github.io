@@ -74,6 +74,17 @@ ul.tools p { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.88rem; }
   border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.9rem;
 }
 .quick-nav a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.search-box { margin: 0 0 2rem; }
+.search-box label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; }
+.search-box input {
+  width: 100%; font-family: inherit; font-size: 1rem; padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);
+}
+.search-box input:focus { outline: none; border-color: var(--accent); }
+.search-empty { color: var(--muted); font-size: 0.88rem; margin: 0.8rem 0 0; }
+section.tool-group h2.category { margin-top: 2rem; }
+section.tool-group:first-of-type h2.category { margin-top: 0; }
+#category-season ul.tools li { border-color: var(--accent); }
 .ad-slot { margin: 2.5rem 0; text-align: center; min-height: 100px; }
 footer { margin-top: 2.5rem; font-size: 0.78rem; color: var(--muted); }
 footer a { color: var(--accent); }
@@ -82,135 +93,195 @@ footer a { color: var(--accent); }
 <body>
 <div class="page">
   <h1>webtools-labs</h1>
-  <p class="lede">フリマ・お金・働き方に関する「ちょっと計算したい」を解決する、登録不要の無料ツール集です。</p>
+  <p class="lede">給料・扶養・税金・退職・フリマなどの「ちょっと計算したい」を解決する、登録不要の無料ツール集です（全28ツール）。</p>
   <nav class="quick-nav">
-    <a href="#category-furima">フリマ</a>
-    <a href="#category-money">お金</a>
-    <a href="#category-work">働き方・労務</a>
+    <a href="#category-season">今の時期のおすすめ</a>
+    <a href="#category-salary">給料・手取り</a>
+    <a href="#category-part">バイト・パート・扶養</a>
+    <a href="#category-tax">税金・年末調整・確定申告</a>
+    <a href="#category-life-event">退職・休職・出産</a>
+    <a href="#category-furima">フリマ（メルカリなど）</a>
+    <a href="#category-life">暮らし</a>
   </nav>
-  <h2 class="category" id="category-furima">フリマ</h2>
+  <div class="search-box">
+    <label for="toolSearch">ツールを探す</label>
+    <input type="search" id="toolSearch" placeholder="例: 手取り、扶養、年末調整、メルカリ、退職" autocomplete="off">
+    <p class="search-empty" id="searchEmpty" hidden>見つかりませんでした。別の言葉で探すか、下のカテゴリから探してください。</p>
+  </div>
+
+  <section class="tool-group" id="category-season">
+  <h2 class="category">今の時期によく使われているツール</h2>
   <ul class="tools">
-    <li>
-      <a href="/frima-tesuryo-hikaku/">フリマ手数料計算・比較ツール</a>
-      <p>メルカリ・ラクマ・Yahoo!フリマ（旧PayPayフリマ）の手取りを一度に比較できます。</p>
+    <li data-kw="年末調整 還付 生命保険料控除 地震保険料控除 12月">
+      <a href="/nencho-kanpu-keisan/">年末調整 還付金シミュレーター</a>
+      <p>年収・生命保険料控除・扶養状況を入れるだけで、年末調整でいくら戻ってくるか（還付金）の目安が分かります。</p>
     </li>
-    <li>
-      <a href="/frima-hasso-hikaku/">フリマ配送方法・送料比較ツール</a>
-      <p>ネコポス・ゆうパケット・宅急便・ゆうパックなど、一番安い発送方法がすぐ分かります。</p>
+    <li data-kw="大学生 子ども 親 150万 159万 197万 扶養控除 特定扶養控除 年末調整">
+      <a href="/tokutei-shinzoku-keisan/">特定親族特別控除 計算ツール</a>
+      <p>大学生など19〜22歳の子のバイト年収から、親が受けられる控除の額と所得税への影響が分かります（令和8年分対応）。</p>
     </li>
-    <li>
-      <a href="/frima-tedori-simulator/">フリマ手取りシミュレーター</a>
-      <p>手数料と最安の発送方法をまとめて計算。目標の手取り額から出品価格を逆算することもできます。</p>
+    <li data-kw="103万 106万 130万 150万 178万 136万 扶養 パート 主婦 学生 年収の壁">
+      <a href="/fuyou-no-kabe-keisan/">扶養の壁チェッカー</a>
+      <p>年収を入れるだけで、119万・130万・136万・150万・178万など扶養の壁（2026年の収入・令和8年度税制改正・106万円の壁撤廃に対応）をまとめて確認できます。</p>
     </li>
-    <li>
+    <li data-kw="最低賃金 時給 都道府県 10月">
+      <a href="/saitei-chingin-checker/">最低賃金チェッカー</a>
+      <p>都道府県を選ぶだけで、2026年度の新しい最低賃金・引き上げ額・発効日と、時給アップ後の月収・年収の増加額が分かります。</p>
+    </li>
+  </ul>
+  </section>
+
+  <section class="tool-group" id="category-salary">
+  <h2 class="category">給料・手取り</h2>
+  <ul class="tools">
+    <li data-kw="年収 給料 給与 手取り 月収 額面">
+      <a href="/tedori-keisan/">手取り計算ツール</a>
+      <p>額面年収を入れるだけで、社会保険料・所得税・住民税を引いた手取り年収・月収の目安が分かります。</p>
+    </li>
+    <li data-kw="手取り 額面 逆算 転職 年収">
+      <a href="/tedori-gyakusan-keisan/">手取りから逆算する年収計算ツール</a>
+      <p>欲しい手取り額を入れるだけで、そのために必要な額面年収・額面月収の目安を逆算できます。</p>
+    </li>
+    <li data-kw="ボーナス 賞与 夏 冬">
+      <a href="/bonus-tedori-keisan/">賞与手取り計算ツール</a>
+      <p>賞与の額面・前月の給与額・扶養人数から、社会保険料と源泉所得税を引いた手取り賞与額の目安が分かります。</p>
+    </li>
+    <li data-kw="給与明細 厚生年金 健康保険 雇用保険 天引き">
+      <a href="/shakaihoken-uchiwake-keisan/">給与の社会保険料 内訳計算ツール</a>
+      <p>額面月収を入れるだけで、健康保険料・厚生年金保険料・雇用保険料の内訳をまとめて計算できます。</p>
+    </li>
+    <li data-kw="住民税 6月 新卒">
+      <a href="/juminzei-keisan/">住民税計算ツール</a>
+      <p>前年の年収を入れるだけで、今年6月から給料天引きされる住民税（所得割・均等割）の目安が分かります。</p>
+    </li>
+    <li data-kw="残業 深夜 休日 割増">
+      <a href="/zangyodai-keisan/">残業代計算ツール</a>
+      <p>月給と残業時間から、時間外・深夜・休日労働の割増賃金をまとめて計算できます。</p>
+    </li>
+    <li data-kw="交通費 マイカー 非課税">
+      <a href="/tsukin-teate-keisan/">通勤手当の非課税限度額計算ツール</a>
+      <p>通勤方法と支給額を入れるだけで、通勤手当のうち非課税になる金額と課税される超過分の目安が分かります。</p>
+    </li>
+    <li data-kw="有給 有休 付与日数 パート">
+      <a href="/yukyu-hiyou-keisan/">有給休暇 付与日数計算ツール</a>
+      <p>入社日と週の所定労働日数から、有給休暇の付与日数・次回の付与日・残日数の目安が分かります。</p>
+    </li>
+  </ul>
+  </section>
+
+  <section class="tool-group" id="category-part">
+  <h2 class="category">バイト・パート・扶養</h2>
+  <ul class="tools">
+    <li data-kw="バイト パート アルバイト シフト 時給 103万 扶養">
+      <a href="/jikyu-nenshu-keisan/">時給から年収・月収を計算</a>
+      <p>時給・勤務時間・勤務日数から、月収・年収の目安と扶養の壁までの残り時間をまとめて計算できます。</p>
+    </li>
+    <li data-kw="103万 106万 130万 150万 178万 136万 扶養 パート 主婦 学生 年収の壁">
+      <a href="/fuyou-no-kabe-keisan/">扶養の壁チェッカー</a>
+      <p>年収を入れるだけで、119万・130万・136万・150万・178万など扶養の壁（2026年の収入・令和8年度税制改正・106万円の壁撤廃に対応）をまとめて確認できます。</p>
+    </li>
+    <li data-kw="大学生 子ども 親 150万 159万 197万 扶養控除 特定扶養控除 年末調整">
+      <a href="/tokutei-shinzoku-keisan/">特定親族特別控除 計算ツール</a>
+      <p>大学生など19〜22歳の子のバイト年収から、親が受けられる控除の額と所得税への影響が分かります（令和8年分対応）。</p>
+    </li>
+    <li data-kw="最低賃金 時給 都道府県 10月">
+      <a href="/saitei-chingin-checker/">最低賃金チェッカー</a>
+      <p>都道府県を選ぶだけで、2026年度の新しい最低賃金・引き上げ額・発効日と、時給アップ後の月収・年収の増加額が分かります。</p>
+    </li>
+  </ul>
+  </section>
+
+  <section class="tool-group" id="category-tax">
+  <h2 class="category">税金・年末調整・確定申告</h2>
+  <ul class="tools">
+    <li data-kw="年末調整 還付 生命保険料控除 地震保険料控除 12月">
+      <a href="/nencho-kanpu-keisan/">年末調整 還付金シミュレーター</a>
+      <p>年収・生命保険料控除・扶養状況を入れるだけで、年末調整でいくら戻ってくるか（還付金）の目安が分かります。</p>
+    </li>
+    <li data-kw="医療費 確定申告 出産 還付 10万円">
+      <a href="/iryouhi-koujo-keisan/">医療費控除 計算ツール</a>
+      <p>1年間の医療費と保険金等の補填額を入れるだけで、医療費控除額と所得税・住民税の還付額の目安が分かります。</p>
+    </li>
+    <li data-kw="iDeCo イデコ 年金 節税 老後">
+      <a href="/ideco-setsuzei-keisan/">iDeCo（確定拠出年金）節税シミュレーター</a>
+      <p>年収・職業区分・毎月の掛金を入れるだけで、iDeCoの年間節税額と将来の累計節税額の目安が分かります。</p>
+    </li>
+    <li data-kw="副業 20万円 確定申告 雑所得">
+      <a href="/fukugyo-shinkoku-keisan/">副業の確定申告 要否チェッカー</a>
+      <p>副業の収入・経費を入れるだけで、いわゆる「20万円ルール」にもとづく所得税の確定申告の要否を判定できます。</p>
+    </li>
+    <li data-kw="メルカリ ラクマ 確定申告 20万円">
       <a href="/frima-kakuteishinkoku-checker/">フリマの確定申告 要否チェッカー</a>
       <p>メルカリ・ラクマの売上について、確定申告が必要かどうかを質問に答えるだけで判定できます。</p>
     </li>
   </ul>
+  </section>
 
-  <h2 class="category" id="category-money">お金</h2>
+  <section class="tool-group" id="category-life-event">
+  <h2 class="category">退職・休職・出産</h2>
   <ul class="tools">
-    <li>
-      <a href="/revolving-risoku-keisan/">リボ払い・分割払い 実質利息計算ツール</a>
-      <p>残高・毎月の返済額・実質年率から、完済までの期間と支払う利息の総額が分かります。</p>
-    </li>
-    <li>
-      <a href="/fuyou-no-kabe-keisan/">扶養の壁チェッカー</a>
-      <p>年収を入れるだけで、119万・130万・136万・150万・178万など扶養の壁（2026年の収入・令和8年度税制改正・106万円の壁撤廃に対応）をまとめて確認できます。</p>
-    </li>
-    <li>
-      <a href="/tokutei-shinzoku-keisan/">特定親族特別控除 計算ツール</a>
-      <p>大学生など19〜22歳の子のバイト年収から、親が受けられる控除の額と所得税への影響が分かります（令和8年分対応）。</p>
-    </li>
-    <li>
-      <a href="/tedori-keisan/">手取り計算ツール</a>
-      <p>額面年収を入れるだけで、社会保険料・所得税・住民税を引いた手取り年収・月収の目安が分かります。</p>
-    </li>
-    <li>
-      <a href="/jikyu-nenshu-keisan/">時給から年収・月収を計算</a>
-      <p>時給・勤務時間・勤務日数から、月収・年収の目安と扶養の壁までの残り時間をまとめて計算できます。</p>
-    </li>
-    <li>
-      <a href="/saitei-chingin-checker/">最低賃金チェッカー</a>
-      <p>都道府県を選ぶだけで、2026年度の新しい最低賃金・引き上げ額・発効日と、時給アップ後の月収・年収の増加額が分かります。</p>
-    </li>
-    <li>
-      <a href="/yubin-kitte-keisan/">郵便物の切手代早見表</a>
-      <p>郵便物の重さを入れるだけで、定形郵便物・定形外郵便物・レターパックの料金をまとめて比較できます。</p>
-    </li>
-    <li>
-      <a href="/bonus-tedori-keisan/">賞与手取り計算ツール</a>
-      <p>賞与の額面・前月の給与額・扶養人数から、社会保険料と源泉所得税を引いた手取り賞与額の目安が分かります。</p>
-    </li>
-    <li>
-      <a href="/juminzei-keisan/">住民税計算ツール</a>
-      <p>前年の年収を入れるだけで、今年6月から給料天引きされる住民税（所得割・均等割）の目安が分かります。</p>
-    </li>
-    <li>
-      <a href="/tsukin-teate-keisan/">通勤手当の非課税限度額計算ツール</a>
-      <p>通勤方法と支給額を入れるだけで、通勤手当のうち非課税になる金額と課税される超過分の目安が分かります。</p>
-    </li>
-    <li>
-      <a href="/tedori-gyakusan-keisan/">手取りから逆算する年収計算ツール</a>
-      <p>欲しい手取り額を入れるだけで、そのために必要な額面年収・額面月収の目安を逆算できます。</p>
-    </li>
-    <li>
-      <a href="/shakaihoken-uchiwake-keisan/">給与の社会保険料 内訳計算ツール</a>
-      <p>額面月収を入れるだけで、健康保険料・厚生年金保険料・雇用保険料の内訳をまとめて計算できます。</p>
-    </li>
-    <li>
-      <a href="/nencho-kanpu-keisan/">年末調整 還付金シミュレーター</a>
-      <p>年収・生命保険料控除・扶養状況を入れるだけで、年末調整でいくら戻ってくるか（還付金）の目安が分かります。</p>
-    </li>
-    <li>
-      <a href="/iryouhi-koujo-keisan/">医療費控除 計算ツール</a>
-      <p>1年間の医療費と保険金等の補填額を入れるだけで、医療費控除額と所得税・住民税の還付額の目安が分かります。</p>
-    </li>
-    <li>
-      <a href="/ideco-setsuzei-keisan/">iDeCo（確定拠出年金）節税シミュレーター</a>
-      <p>年収・職業区分・毎月の掛金を入れるだけで、iDeCoの年間節税額と将来の累計節税額の目安が分かります。</p>
-    </li>
-  </ul>
-
-  <h2 class="category" id="category-work">働き方・労務</h2>
-  <ul class="tools">
-    <li>
-      <a href="/yukyu-hiyou-keisan/">有給休暇 付与日数計算ツール</a>
-      <p>入社日と週の所定労働日数から、有給休暇の付与日数・次回の付与日・残日数の目安が分かります。</p>
-    </li>
-    <li>
+    <li data-kw="退職 有給消化 最終出社日">
       <a href="/taishoku-yukyu-keisan/">退職時の有給消化シミュレーター</a>
       <p>退職日と残りの有給日数から、有給を使い切った場合の最終出社日を逆算できます。</p>
     </li>
-    <li>
+    <li data-kw="退職金 税金 退職所得控除">
       <a href="/taishokukin-zei-keisan/">退職金の税金計算ツール</a>
       <p>退職金の額面と勤続年数から、税金を引いた手取り退職金の目安が分かります。</p>
     </li>
-    <li>
+    <li data-kw="退職 国民健康保険 任意継続 国保">
       <a href="/taishokugo-hoken-hikaku-keisan/">退職後の健康保険 比較シミュレーター</a>
       <p>退職後の「国民健康保険」と「任意継続」の保険料を月額換算で比較できます。</p>
     </li>
-    <li>
-      <a href="/sankyu-ikuji-teate-keisan/">産休・育休手当金シミュレーター</a>
-      <p>産休前の月収から、出産手当金と育児休業給付金の目安をまとめて計算できます。</p>
-    </li>
-    <li>
-      <a href="/zangyodai-keisan/">残業代計算ツール</a>
-      <p>月給と残業時間から、時間外・深夜・休日労働の割増賃金をまとめて計算できます。</p>
-    </li>
-    <li>
+    <li data-kw="失業手当 失業保険 基本手当 ハローワーク 退職">
       <a href="/shitsugyo-hoken-keisan/">失業保険（基本手当）シミュレーター</a>
       <p>退職前の給与と退職理由・年齢から、もらえる基本手当の日額・総額の目安を計算できます。</p>
     </li>
-    <li>
+    <li data-kw="休職 病気 けが 傷病手当金">
       <a href="/shoubyou-teate-keisan/">傷病手当金計算ツール</a>
       <p>標準報酬月額の目安と休んだ日数から、傷病手当金の日額・支給される合計額の目安を計算できます。</p>
     </li>
-    <li>
-      <a href="/fukugyo-shinkoku-keisan/">副業の確定申告 要否チェッカー</a>
-      <p>副業の収入・経費を入れるだけで、いわゆる「20万円ルール」にもとづく所得税の確定申告の要否を判定できます。</p>
+    <li data-kw="産休 育休 出産手当金 育児休業給付金 妊娠">
+      <a href="/sankyu-ikuji-teate-keisan/">産休・育休手当金シミュレーター</a>
+      <p>産休前の月収から、出産手当金と育児休業給付金の目安をまとめて計算できます。</p>
     </li>
   </ul>
+  </section>
+
+  <section class="tool-group" id="category-furima">
+  <h2 class="category">フリマ（メルカリなど）</h2>
+  <ul class="tools">
+    <li data-kw="メルカリ ラクマ ヤフオク Yahoo!フリマ 手数料">
+      <a href="/frima-tesuryo-hikaku/">フリマ手数料計算・比較ツール</a>
+      <p>メルカリ・ラクマ・Yahoo!フリマ（旧PayPayフリマ）の手取りを一度に比較できます。</p>
+    </li>
+    <li data-kw="メルカリ 送料 らくらくメルカリ便 ゆうゆうメルカリ便 発送">
+      <a href="/frima-hasso-hikaku/">フリマ配送方法・送料比較ツール</a>
+      <p>ネコポス・ゆうパケット・宅急便・ゆうパックなど、一番安い発送方法がすぐ分かります。</p>
+    </li>
+    <li data-kw="メルカリ 利益 手取り 売上">
+      <a href="/frima-tedori-simulator/">フリマ手取りシミュレーター</a>
+      <p>手数料と最安の発送方法をまとめて計算。目標の手取り額から出品価格を逆算することもできます。</p>
+    </li>
+    <li data-kw="メルカリ ラクマ 確定申告 20万円">
+      <a href="/frima-kakuteishinkoku-checker/">フリマの確定申告 要否チェッカー</a>
+      <p>メルカリ・ラクマの売上について、確定申告が必要かどうかを質問に答えるだけで判定できます。</p>
+    </li>
+  </ul>
+  </section>
+
+  <section class="tool-group" id="category-life">
+  <h2 class="category">暮らし</h2>
+  <ul class="tools">
+    <li data-kw="リボ 分割払い クレジットカード 利息">
+      <a href="/revolving-risoku-keisan/">リボ払い・分割払い 実質利息計算ツール</a>
+      <p>残高・毎月の返済額・実質年率から、完済までの期間と支払う利息の総額が分かります。</p>
+    </li>
+    <li data-kw="郵便 切手 はがき 定形 料金">
+      <a href="/yubin-kitte-keisan/">郵便物の切手代早見表</a>
+      <p>郵便物の重さを入れるだけで、定形郵便物・定形外郵便物・レターパックの料金をまとめて比較できます。</p>
+    </li>
+  </ul>
+  </section>
 
   <div class="ad-slot">
     <ins class="adsbygoogle"
@@ -228,5 +299,36 @@ footer a { color: var(--accent); }
     <a href="/privacy/">プライバシーポリシー</a>
   </footer>
 </div>
+<script>
+(function () {
+  var input = document.getElementById('toolSearch');
+  var empty = document.getElementById('searchEmpty');
+  var groups = Array.prototype.slice.call(document.querySelectorAll('section.tool-group'));
+  var season = document.getElementById('category-season');
+  function norm(t) { return t.toLowerCase().replace(/\s+/g, ''); }
+  input.addEventListener('input', function () {
+    var words = input.value.trim().split(/\s+/).filter(Boolean).map(norm);
+    var hits = 0;
+    var seen = {};
+    groups.forEach(function (g) {
+      // 検索中は「今の時期のおすすめ」を隠して、同じツールが二重に出ないようにする
+      if (g === season) { g.hidden = words.length > 0; return; }
+      var visible = 0;
+      Array.prototype.forEach.call(g.querySelectorAll('li'), function (li) {
+        var hay = norm(li.textContent + ' ' + (li.getAttribute('data-kw') || ''));
+        var href = li.querySelector('a').getAttribute('href');
+        // 複数カテゴリに載っているツールは、検索結果では最初の1回だけ表示する
+        var ok = words.every(function (w) { return hay.indexOf(w) !== -1; }) && !(words.length && seen[href]);
+        if (ok && words.length) seen[href] = true;
+        li.hidden = !ok;
+        if (ok) visible++;
+      });
+      g.hidden = visible === 0;
+      hits += visible;
+    });
+    empty.hidden = hits > 0 || words.length === 0;
+  });
+})();
+</script>
 </body>
 </html>
