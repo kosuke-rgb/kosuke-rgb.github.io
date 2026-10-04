@@ -44,6 +44,7 @@
 ## 退職・休職・出産
 
 - [退職時の有給消化シミュレーター](https://webtools-labs.com/taishoku-yukyu-keisan/): 退職日と残りの有給日数から最終出社日を逆算
+- [退職日シミュレーター](https://webtools-labs.com/taishokubi-hikaku-keisan/): 退職日を月末にするか前日にするかで、退職月の社会保険料・国民年金・国保の負担と将来の年金への影響を比較
 - [退職金の税金計算ツール](https://webtools-labs.com/taishokukin-zei-keisan/): 退職所得控除をふまえた退職金の手取り額
 - [退職後の健康保険 比較シミュレーター](https://webtools-labs.com/taishokugo-hoken-hikaku-keisan/): 国民健康保険と任意継続の保険料を月額で比較
 - [失業保険（基本手当）シミュレーター](https://webtools-labs.com/shitsugyo-hoken-keisan/): 基本手当の日額・総額の目安
