@@ -36,6 +36,7 @@
 ## 税金・年末調整・確定申告
 
 - [年末調整 還付金シミュレーター](https://webtools-labs.com/nencho-kanpu-keisan/): 生命保険料控除・地震保険料控除・扶養状況から年末調整の還付額の目安
+- [生命保険料控除 計算ツール](https://webtools-labs.com/seimei-hoken-koujo-keisan/): 一般・介護医療・個人年金の年間保険料から、所得税・住民税の生命保険料控除額と節税額の目安（令和8年分の23歳未満の扶養親族がいる場合の特例に対応）
 - [医療費控除 計算ツール](https://webtools-labs.com/iryouhi-koujo-keisan/): 医療費控除額と所得税・住民税の還付額の目安
 - [iDeCo 節税シミュレーター](https://webtools-labs.com/ideco-setsuzei-keisan/): 年収・職業区分・掛金からiDeCoの節税額
 - [副業の確定申告 要否チェッカー](https://webtools-labs.com/fukugyo-shinkoku-keisan/): 副業の「20万円ルール」にもとづく確定申告の要否
