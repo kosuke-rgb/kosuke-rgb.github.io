@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>源泉徴収票の見方・計算チェッカー【令和8年分対応】所得税が合っているか自動で確認</title>
+<meta name="description" content="源泉徴収票の「支払金額」「給与所得控除後の金額」「所得控除の額の合計額」「源泉徴収税額」を入れるだけで、年末調整の所得税が正しく計算されているかを確認できる無料ツール。令和8年分（2026年）の基礎控除104万円・給与所得控除74万円と令和7年分の両方に対応。各欄の見方と年収別の早見表つき。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://webtools-labs.com/gensen-choshuhyo-checker/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370765779014113" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NKK5TXCQEK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NKK5TXCQEK');
+</script>
+<script>
+(function () {
+  var fired = false;
+  function fireOnce() {
+    if (fired) return;
+    fired = true;
+    if (typeof gtag === 'function') gtag('event', 'tool_used', { tool_name: document.title });
+  }
+  document.addEventListener('input', fireOnce, true);
+  document.addEventListener('change', fireOnce, true);
+})();
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230f766e'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle' fill='white' font-family='sans-serif'%3E%EF%BF%A5%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="webtools-labs">
+<meta property="og:title" content="源泉徴収票の見方・計算チェッカー【令和8年分対応】所得税が合っているか自動で確認">
+<meta property="og:description" content="源泉徴収票の金額を入れるだけで、年末調整の所得税が正しいかを確認できます（令和8年分・令和7年分に対応）。">
+<meta property="og:url" content="https://webtools-labs.com/gensen-choshuhyo-checker/">
+<meta property="og:image" content="https://webtools-labs.com/og-image.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="源泉徴収票の見方・計算チェッカー">
+<meta name="twitter:description" content="源泉徴収票の金額から、所得税が正しく計算されているかを確認できる無料ツール。">
+<meta name="twitter:image" content="https://webtools-labs.com/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "源泉徴収票の見方・計算チェッカー",
+  "url": "https://webtools-labs.com/gensen-choshuhyo-checker/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "description": "源泉徴収票の「支払金額」「給与所得控除後の金額」「所得控除の額の合計額」「源泉徴収税額」を入れるだけで、年末調整の所得税が正しく計算されているかを確認できる無料ツール。令和8年分（2026年）の基礎控除104万円・給与所得控除74万円と令和7年分の両方に対応。各欄の見方と年収別の早見表つき。",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  },
+  "inLanguage": "ja"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "源泉徴収票の「源泉徴収税額」は何の金額ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "年末調整をした場合は、1年間の給与に対して最終的に確定した所得税（復興特別所得税を含む）の金額です。毎月の給与やボーナスから天引きされた合計額ではありません。天引きの合計との差額は、年末調整で還付（または追加徴収）されています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "源泉徴収税額が0円なのはなぜですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "給与所得控除後の金額から、基礎控除・社会保険料控除などの所得控除を引いた金額（課税所得）が0円以下になると、所得税は0円になります。令和8年分は基礎控除が最大104万円に引き上げられたため、年収200万円前後でも0円になる人が増えています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "計算結果と源泉徴収票の金額が合わないのはなぜですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "年の途中で退職して年末調整を受けていない、2か所以上から給与をもらっている、前の勤務先の給与を合算している、住宅ローン控除や所得金額調整控除がある、などの場合に差が出ます。年末調整を受けていない源泉徴収票の「源泉徴収税額」は天引きの合計額なので、確定申告をすると還付される場合があります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "令和8年分の源泉徴収票は令和7年分と何が違いますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "令和8年分から基礎控除（合計所得489万円以下は104万円）と給与所得控除の最低額（74万円）が引き上げられたため、同じ年収でも源泉徴収税額が少なくなります。年収400万円・独身なら所得税は令和7年分より約8,000円少なくなる計算です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "源泉徴収票はいつもらえますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "年末調整をした会社員は、12月の給与明細と一緒か、翌年1月末までに勤務先から交付されます。年の途中で退職した人には、退職後1か月以内に交付されることになっています。"
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://webtools-labs.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "源泉徴収票の見方・計算チェッカー",
+      "item": "https://webtools-labs.com/gensen-choshuhyo-checker/"
+    }
+  ]
+}
+</script>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface-2: #f7f7f7;
+  --ink: #1a1a1a;
+  --muted: #767676;
+  --line: #e3e3e3;
+  --accent: #0f766e;
+  --best-bg: #f0f8f6;
+  --warn-bg: #fff7ed;
+  --warn-ink: #9a5b00;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+header.masthead { margin-bottom: 1.5rem; }
+h1 {
+  font-weight: 700;
+  font-size: clamp(1.4rem, 4.5vw, 1.7rem);
+  margin: 0 0 0.7rem;
+  letter-spacing: 0.01em;
+}
+p.lede { color: var(--muted); margin: 0; max-width: 60ch; font-size: 0.95rem; }
+.updated-note { display: block; margin-top: 0.9rem; font-size: 0.78rem; color: var(--muted); }
+
+.notice-box {
+  background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px;
+  padding: 0.9rem 1.1rem; font-size: 0.85rem; margin-bottom: 2rem;
+}
+
+section { margin-bottom: 2.5rem; }
+h2 { font-size: 1.05rem; font-weight: 700; margin: 0 0 1rem; }
+
+.field-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+.field { flex: 1; min-width: 160px; }
+.field label { display: block; font-size: 0.83rem; color: var(--muted); margin-bottom: 0.35rem; }
+.field input[type="number"], .field select {
+  width: 100%; font-variant-numeric: tabular-nums; font-size: 1.05rem; font-family: inherit;
+  padding: 0.55rem 0.7rem; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg); color: var(--ink);
+}
+.field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+.field-hint { font-size: 0.76rem; color: var(--muted); margin-top: 0.3rem; }
+
+.summary-cards { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+.summary-card {
+  flex: 1; min-width: 180px; background: var(--best-bg); border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+.summary-card .label { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.3rem; }
+.summary-card .value { font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.summary-card .sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+table.compare { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+table.compare th, table.compare td {
+  padding: 0.55rem 0.5rem; text-align: right; border-bottom: 1px solid var(--line); vertical-align: top;
+}
+table.compare th:first-child, table.compare td:first-child { text-align: left; }
+table.compare thead th { color: var(--muted); font-weight: 500; font-size: 0.78rem; }
+table.compare td.num { font-variant-numeric: tabular-nums; }
+tr.best td { font-weight: 700; }
+tr.best { background: var(--best-bg); }
+tr.na td { color: var(--muted); }
+
+.ref-table { overflow-x: auto; }
+.ref-table table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 460px; }
+.ref-table th, .ref-table td { padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--line); text-align: left; }
+.ref-table td.num { font-variant-numeric: tabular-nums; text-align: right; }
+
+.disclaimer { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
+
+.share-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.1rem; }
+.share-btn {
+  display: inline-flex; align-items: center; padding: 0.5rem 1rem; border-radius: 999px;
+  color: #fff; text-decoration: none; font-size: 0.82rem; font-weight: 700;
+}
+.share-btn:hover { opacity: 0.85; }
+.share-x { background: #000; }
+.share-line { background: #06c755; }
+.share-fb { background: #1877f2; }
+.share-hatena { background: #00a4de; }
+
+.ad-slot { margin: 2.5rem 0; text-align: center; min-height: 100px; }
+
+.pr-box {
+  border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px;
+  padding: 1.2rem 1.3rem; margin: 2.5rem 0; background: var(--best-bg);
+}
+.pr-box .pr-label {
+  display: inline-flex; align-items: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
+  color: #fff; background: var(--accent); border-radius: 999px;
+  padding: 0.2rem 0.7rem; margin-bottom: 0.8rem;
+}
+.pr-box p.pr-lede { color: var(--ink); font-size: 0.92rem; margin: 0 0 1rem; max-width: none; line-height: 1.7; }
+.pr-box .pr-banner { text-align: center; }
+.pr-box .pr-banner img { max-width: 100%; height: auto; }  /* 広告バナー（幅320px）がスマホで画面からはみ出さないように */
+.pr-box .pr-cta {
+  display: inline-block; background: var(--accent); color: #fff; font-weight: 700;
+  font-size: 0.85rem; padding: 0.6rem 1.3rem; border-radius: 999px; text-decoration: none;
+}
+.pr-box .pr-cta:hover { opacity: 0.85; }
+
+.contact-box textarea {
+  width: 100%; min-height: 6rem; font-family: inherit; font-size: 0.92rem;
+  padding: 0.7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink);
+  resize: vertical; margin-bottom: 0.6rem;
+}
+.contact-box input[type="email"] {
+  width: 100%; font-family: inherit; font-size: 0.92rem;
+  padding: 0.6rem 0.7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+.contact-box textarea:focus, .contact-box input:focus { outline: none; border-color: var(--accent); }
+.contact-box button {
+  font-family: inherit; font-weight: 700; font-size: 0.9rem; padding: 0.6rem 1.4rem;
+  border: none; border-radius: 6px; background: var(--accent); color: #fff; cursor: pointer;
+}
+.contact-box button:disabled { opacity: 0.5; cursor: not-allowed; }
+.contact-status { font-size: 0.85rem; margin-top: 0.6rem; }
+.contact-status.ok { color: var(--accent); }
+.contact-status.err { color: #b91c1c; }
+
+footer.site-footer {
+  margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+  font-size: 0.78rem; color: var(--muted);
+}
+footer.site-footer p { margin: 0 0 0.5rem; }
+footer.site-footer a { color: var(--accent); }
+
+.faq-item { border-bottom: 1px solid var(--line); padding: 0.9rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-item summary {
+  cursor: pointer; font-weight: 700; font-size: 0.92rem; list-style: none;
+  position: relative; padding-right: 1.6rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; position: absolute; right: 0; top: 0; color: var(--accent); font-weight: 700; font-size: 1.1rem;
+}
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.88rem; }
+.breadcrumb { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.1rem; }
+.breadcrumb a { color: var(--accent); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.related-tools { border: 1px solid var(--line); border-radius: 10px; padding: 1.3rem 1.4rem; margin: 2.5rem 0; }
+.related-tools h2 { margin: 0 0 0.9rem; }
+.related-tools ul { list-style: none; margin: 0; padding: 0; }
+.related-tools li { padding: 0.7rem 0; border-top: 1px solid var(--line); }
+.related-tools li:first-child { border-top: none; }
+.related-tools a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.related-tools a:hover { text-decoration: underline; }
+.related-tools li p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="breadcrumb" aria-label="パンくずリスト"><a href="https://webtools-labs.com/">ホーム</a> / 源泉徴収票の見方・計算チェッカー</nav>
+  <header class="masthead">
+    <h1>源泉徴収票の見方・計算チェッカー</h1>
+    <p class="lede">源泉徴収票の4つの金額を入れるだけで、年末調整の所得税（源泉徴収税額）が正しく計算されているかを確認できます。各欄が何の金額なのかも、下で順番に解説しています。</p>
+    <span class="updated-note">計算式 最終確認日: 2026年10月15日（令和8年分：基礎控除 合計所得489万円以下は104万円・給与所得控除 最低74万円／令和7年分：基礎控除 最大95万円・給与所得控除 最低65万円）</span>
+    <p class="ad-disclosure" style="font-size:0.75rem;opacity:0.7;margin:0.5rem 0 0;">※当サイトはアフィリエイト広告（PR）を利用しています。</p>
+  </header>
+
+  <div class="notice-box">
+    ⚠️ 本ツールは国税庁の<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">給与所得控除</a>・<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">基礎控除</a>・<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">所得税の税率</a>にもとづいて、年末調整の計算を再現する確認用ツールです。源泉徴収票の金額を入力しても、どこにも送信・保存されません。最終的な判断は勤務先の給与担当や税務署にご確認ください。
+  </div>
+
+  <section>
+    <h2>源泉徴収票の金額を入れて確認</h2>
+    <div class="field-row">
+      <div class="field">
+        <label for="year">源泉徴収票の年分</label>
+        <select id="year">
+          <option value="8" selected>令和8年分（2026年の給与）</option>
+          <option value="7">令和7年分（2025年の給与）</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="pay">支払金額（円）</label>
+        <input type="number" id="pay" min="0" step="1000" value="4000000">
+        <div class="field-hint">左上の「支払金額」。1年間の給与・賞与の合計（額面）</div>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="afterDed">給与所得控除後の金額（円）</label>
+        <input type="number" id="afterDed" min="0" step="1" placeholder="空欄なら自動計算">
+        <div class="field-hint">支払金額の右隣。空欄のままでも計算できます</div>
+      </div>
+      <div class="field">
+        <label for="deductions">所得控除の額の合計額（円）</label>
+        <input type="number" id="deductions" min="0" step="1" value="1628000">
+        <div class="field-hint">その右隣。社会保険料・基礎控除・扶養控除などの合計</div>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="withheld">源泉徴収税額（円）</label>
+        <input type="number" id="withheld" min="0" step="1" value="57700">
+        <div class="field-hint">いちばん右の欄。空欄なら確認せず計算だけします</div>
+      </div>
+      <div class="field">
+        <label for="housing">住宅借入金等特別控除の額（円）</label>
+        <input type="number" id="housing" min="0" step="1" value="0">
+        <div class="field-hint">住宅ローン控除がある人だけ（中段の欄）</div>
+      </div>
+    </div>
+
+    <div class="summary-cards" id="summaryCards"></div>
+    <p class="notice-box" id="checkNote" style="display:none"></p>
+
+    <div style="overflow-x:auto">
+      <table class="compare">
+        <thead><tr><th>計算の流れ</th><th class="num">金額</th></tr></thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+    <p class="disclaimer">「給与所得控除後の金額」は、支払金額が660万円未満の場合、国税庁の「年末調整等のための給与所得控除後の給与等の金額の表」と同じく4,000円単位で計算しています。所得金額調整控除（年収850万円超で23歳未満の扶養親族がいる場合など）がある人は、源泉徴収票の「給与所得控除後の金額（調整控除後）」を入力してください。</p>
+    <div class="share-row" id="shareRow">
+      <a class="share-btn share-x" id="shareX" href="#" target="_blank" rel="noopener">𝕏でシェア</a>
+      <a class="share-btn share-line" id="shareLine" href="#" target="_blank" rel="noopener">LINEで送る</a>
+      <a class="share-btn share-hatena" id="shareHatena" href="#" target="_blank" rel="noopener">はてブする</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>源泉徴収票の見方（主な欄の意味）</h2>
+    <div class="ref-table">
+      <table>
+        <thead><tr><th>欄の名前</th><th>何の金額か</th></tr></thead>
+        <tbody>
+          <tr><td>支払金額</td><td>1年間（1〜12月）に支払われた給与・賞与の合計（額面）。通勤手当など非課税のものは含みません。</td></tr>
+          <tr><td>給与所得控除後の金額（調整控除後）</td><td>支払金額から「給与所得控除」（会社員の必要経費にあたる金額）を引いたもの。これが「給与所得」です。</td></tr>
+          <tr><td>所得控除の額の合計額</td><td>社会保険料控除・基礎控除・配偶者控除・扶養控除・生命保険料控除などの合計。</td></tr>
+          <tr><td>源泉徴収税額</td><td>1年間の所得税（復興特別所得税を含む）。年末調整をした場合は、確定した年税額です。</td></tr>
+          <tr><td>社会保険料等の金額</td><td>1年間に給与・賞与から引かれた健康保険・厚生年金・雇用保険・介護保険の合計（iDeCoの掛金も含む）。</td></tr>
+          <tr><td>生命保険料の控除額・地震保険料の控除額</td><td>年末調整で保険料控除申告書を出した場合の控除額。</td></tr>
+          <tr><td>住宅借入金等特別控除の額</td><td>住宅ローン控除で所得税から差し引いた金額。</td></tr>
+          <tr><td>控除対象配偶者・扶養親族の数</td><td>配偶者控除・扶養控除の対象になった家族の人数。</td></tr>
+          <tr><td>基礎控除の額</td><td>合計所得に応じた基礎控除の金額（令和8年分は最大104万円）。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>所得税（源泉徴収税額）の計算の流れ</h2>
+    <p>源泉徴収票の金額は、次の順番でつながっています。</p>
+    <ol>
+      <li><strong>支払金額 − 給与所得控除 ＝ 給与所得控除後の金額</strong></li>
+      <li><strong>給与所得控除後の金額 − 所得控除の額の合計額 ＝ 課税所得</strong>（1,000円未満切り捨て）</li>
+      <li><strong>課税所得 × 税率 − 控除額 ＝ 所得税</strong>（税率は5%〜45%。住宅ローン控除があればここから引く）</li>
+      <li><strong>所得税 × 102.1% ＝ 源泉徴収税額</strong>（復興特別所得税を加え、100円未満切り捨て）</li>
+    </ol>
+    <h3 style="font-size:0.95rem;margin:1.2rem 0 0.6rem;">計算例：年収400万円・独身・令和8年分</h3>
+    <div class="ref-table">
+      <table>
+        <thead><tr><th>項目</th><th class="num">金額</th></tr></thead>
+        <tbody>
+          <tr><td>支払金額</td><td class="num">4,000,000円</td></tr>
+          <tr><td>給与所得控除後の金額</td><td class="num">2,760,000円</td></tr>
+          <tr><td>所得控除の額の合計額（社会保険料588,000円＋基礎控除1,040,000円）</td><td class="num">1,628,000円</td></tr>
+          <tr><td>課税所得</td><td class="num">1,132,000円</td></tr>
+          <tr><td>所得税（5%）</td><td class="num">56,600円</td></tr>
+          <tr class="best"><td>源泉徴収税額（×102.1%、100円未満切り捨て）</td><td class="num">57,700円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="disclaimer">社会保険料は年収の14.7%（協会けんぽ・40歳未満の目安）としています。</p>
+  </section>
+
+  <section>
+    <h2>年収別 源泉徴収税額の早見表（令和7年分と令和8年分）</h2>
+    <p>独身・扶養なし・40歳未満で、所得控除が社会保険料と基礎控除だけの場合の目安です。令和8年分は基礎控除と給与所得控除が引き上げられたため、同じ年収でも所得税が少なくなります。</p>
+    <div class="ref-table" style="overflow-x:auto">
+      <table style="white-space:nowrap">
+        <thead><tr><th>支払金額</th><th class="num">給与所得控除後<br>（令和8年分）</th><th class="num">所得控除の合計<br>（令和8年分）</th><th class="num">源泉徴収税額<br>令和7年分</th><th class="num">源泉徴収税額<br>令和8年分</th></tr></thead>
+        <tbody>
+          <tr><td>150万円</td><td class="num">760,000円</td><td class="num">1,260,500円</td><td class="num">0円</td><td class="num">0円</td></tr>
+          <tr><td>200万円</td><td class="num">1,260,000円</td><td class="num">1,334,000円</td><td class="num">3,800円</td><td class="num">0円</td></tr>
+          <tr><td>250万円</td><td class="num">1,670,000円</td><td class="num">1,407,500円</td><td class="num">21,500円</td><td class="num">13,300円</td></tr>
+          <tr><td>300万円</td><td class="num">2,020,000円</td><td class="num">1,481,000円</td><td class="num">35,600円</td><td class="num">27,500円</td></tr>
+          <tr><td>400万円</td><td class="num">2,760,000円</td><td class="num">1,628,000円</td><td class="num">65,900円</td><td class="num">57,700円</td></tr>
+          <tr><td>500万円</td><td class="num">3,560,000円</td><td class="num">1,775,000円</td><td class="num">119,400円</td><td class="num">91,100円</td></tr>
+          <tr><td>600万円</td><td class="num">4,360,000円</td><td class="num">1,922,000円</td><td class="num">186,100円</td><td class="num">149,300円</td></tr>
+          <tr><td>700万円</td><td class="num">5,200,000円</td><td class="num">1,699,000円</td><td class="num">286,500円</td><td class="num">278,400円</td></tr>
+          <tr><td>800万円</td><td class="num">6,100,000円</td><td class="num">1,846,000円</td><td class="num">440,300円</td><td class="num">432,100円</td></tr>
+          <tr><td>1000万円</td><td class="num">8,050,000円</td><td class="num">2,090,000円</td><td class="num">788,700円</td><td class="num">780,500円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="disclaimer">社会保険料は年収の14.7%で概算しています。配偶者控除・扶養控除・生命保険料控除などがある人は、所得税がこれより少なくなります。自分の金額は上のチェッカーで確認してください。</p>
+  </section>
+
+  <section>
+    <h2>源泉徴収票を見て確定申告が必要か確かめる</h2>
+    <p>年末調整を受けた会社員は、原則として確定申告は不要です。ただし次のような人は確定申告が必要、または確定申告をするとお金が戻ってくる可能性があります。</p>
+    <ul>
+      <li>副業の所得が20万円を超える（<a href="https://webtools-labs.com/fukugyo-shinkoku-keisan/">副業の確定申告 要否チェッカー</a>）</li>
+      <li>医療費が年間10万円（所得が200万円未満なら所得の5%）を超えた（<a href="https://webtools-labs.com/iryouhi-koujo-keisan/">医療費控除 計算ツール</a>）</li>
+      <li>ふるさと納税で6自治体以上に寄附した、またはワンストップ特例の申請をしていない（<a href="https://webtools-labs.com/furusato-nozei-keisan/">ふるさと納税 上限額シミュレーター</a>）</li>
+      <li>年の途中で退職して、年末調整を受けていない（「源泉徴収税額」が天引きの合計のままになっている）</li>
+      <li>支払金額が2,000万円を超える</li>
+    </ul>
+  </section>
+
+  <section class="related-tools" id="nencho-tools">
+    <h2>年末調整の書類別ツール（2026年・令和8年分）</h2>
+    <ul>
+      <li>
+        <a href="https://webtools-labs.com/nencho-kanpu-keisan/">年末調整 還付金シミュレーター</a>
+        <p>年収・扶養・保険料控除から、今年の年末調整でいくら戻ってくるかの目安が分かります。</p>
+      </li>
+      <li>
+        <a href="https://webtools-labs.com/hokenryo-koujo-shinkokusho/">保険料控除申告書の書き方・計算ツール</a>
+        <p>「保険料控除申告書」用。控除証明書の金額から、各欄に書く金額が分かります。</p>
+      </li>
+      <li>
+        <a href="https://webtools-labs.com/haigusha-koujo-keisan/">配偶者控除・配偶者特別控除 計算ツール</a>
+        <p>「配偶者控除等申告書」用。配偶者の年収から、控除額と区分Ⅰ・区分Ⅱが分かります。</p>
+      </li>
+      <li>
+        <a href="https://webtools-labs.com/tokutei-shinzoku-keisan/">特定親族特別控除 計算ツール</a>
+        <p>「特定親族特別控除申告書」用。19〜22歳の子のバイト年収から、親の控除額が分かります。</p>
+      </li>
+    </ul>
+  </section>
+
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-2370765779014113"
+      data-ad-slot="3021985784"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <section>
+    <h2>よくある質問</h2>
+    <details class="faq-item">
+      <summary>源泉徴収票の「源泉徴収税額」は何の金額ですか？</summary>
+      <p>年末調整をした場合は、1年間の給与に対して最終的に確定した所得税（復興特別所得税を含む）の金額です。毎月の給与やボーナスから天引きされた合計額ではありません。天引きの合計との差額は、年末調整で還付（または追加徴収）されています。</p>
+    </details>
+    <details class="faq-item">
+      <summary>源泉徴収税額が0円なのはなぜですか？</summary>
+      <p>給与所得控除後の金額から、基礎控除・社会保険料控除などの所得控除を引いた金額（課税所得）が0円以下になると、所得税は0円になります。令和8年分は基礎控除が最大104万円に引き上げられたため、年収200万円前後でも0円になる人が増えています。</p>
+    </details>
+    <details class="faq-item">
+      <summary>計算結果と源泉徴収票の金額が合わないのはなぜですか？</summary>
+      <p>年の途中で退職して年末調整を受けていない、2か所以上から給与をもらっている、前の勤務先の給与を合算している、住宅ローン控除や所得金額調整控除がある、などの場合に差が出ます。年末調整を受けていない源泉徴収票の「源泉徴収税額」は天引きの合計額なので、確定申告をすると還付される場合があります。</p>
+    </details>
+    <details class="faq-item">
+      <summary>令和8年分の源泉徴収票は令和7年分と何が違いますか？</summary>
+      <p>令和8年分から基礎控除（合計所得489万円以下は104万円）と給与所得控除の最低額（74万円）が引き上げられたため、同じ年収でも源泉徴収税額が少なくなります。年収400万円・独身なら所得税は令和7年分より約8,000円少なくなる計算です。</p>
+    </details>
+    <details class="faq-item">
+      <summary>源泉徴収票はいつもらえますか？</summary>
+      <p>年末調整をした会社員は、12月の給与明細と一緒か、翌年1月末までに勤務先から交付されます。年の途中で退職した人には、退職後1か月以内に交付されることになっています。</p>
+    </details>
+  </section>
+
+  <section class="contact-box">
+    <h2>ご意見・追加してほしい機能</h2>
+    <p class="lede" style="margin-bottom:0.9rem;">気づいたことや、あったら便利な機能があれば教えてください。</p>
+    <form id="contactForm">
+      <input type="email" id="contactEmail" placeholder="返信が必要な場合はメールアドレス（任意）">
+      <textarea id="contactMessage" placeholder="ご意見・ご要望をどうぞ" required></textarea>
+      <button type="submit" id="contactSubmit">送信する</button>
+      <p class="contact-status" id="contactStatus"></p>
+    </form>
+  </section>
+
+  <footer class="site-footer">
+    <p>本ツールは年末調整の計算を簡易的に再現した確認用ツールです。所得金額調整控除・前職分の合算・年の途中の退職などにより、実際の源泉徴収票と金額が異なる場合があります。</p>
+    <p>あわせて使える：
+      <a href="https://webtools-labs.com/frima-tesuryo-hikaku/">フリマ手数料計算・比較ツール</a> ／
+      <a href="https://webtools-labs.com/frima-hasso-hikaku/">フリマ配送方法・送料比較ツール</a> ／
+      <a href="https://webtools-labs.com/frima-tedori-simulator/">フリマ手取りシミュレーター</a> ／
+      <a href="https://webtools-labs.com/yukyu-hiyou-keisan/">有給休暇 付与日数計算ツール</a> ／
+      <a href="https://webtools-labs.com/revolving-risoku-keisan/">リボ払い・分割払い 実質利息計算ツール</a> ／
+      <a href="https://webtools-labs.com/taishoku-yukyu-keisan/">退職時の有給消化シミュレーター</a> ／
+      <a href="https://webtools-labs.com/fuyou-no-kabe-keisan/">扶養の壁チェッカー</a> ／
+      <a href="https://webtools-labs.com/tedori-keisan/">手取り計算ツール</a> ／
+      <a href="https://webtools-labs.com/taishokukin-zei-keisan/">退職金の税金計算ツール</a> ／
+      <a href="https://webtools-labs.com/taishokugo-hoken-hikaku-keisan/">退職後の健康保険 比較シミュレーター</a> ／
+      <a href="https://webtools-labs.com/sankyu-ikuji-teate-keisan/">産休・育休手当金シミュレーター</a> ／
+      <a href="https://webtools-labs.com/zangyodai-keisan/">残業代計算ツール</a> ／
+      <a href="https://webtools-labs.com/shitsugyo-hoken-keisan/">失業保険（基本手当）シミュレーター</a> ／
+      <a href="https://webtools-labs.com/jikyu-nenshu-keisan/">時給から年収・月収を計算</a> ／
+      <a href="https://webtools-labs.com/yubin-kitte-keisan/">郵便物の切手代早見表</a> ／
+      <a href="https://webtools-labs.com/shoubyou-teate-keisan/">傷病手当金計算ツール</a> ／
+      <a href="https://webtools-labs.com/juminzei-keisan/">住民税計算ツール</a> ／
+      <a href="https://webtools-labs.com/tsukin-teate-keisan/">通勤手当の非課税限度額計算ツール</a> ／
+      <a href="https://webtools-labs.com/tedori-gyakusan-keisan/">手取りから逆算する年収計算ツール</a> ／
+      <a href="https://webtools-labs.com/shakaihoken-uchiwake-keisan/">給与の社会保険料 内訳計算ツール</a> ／
+      <a href="https://webtools-labs.com/fukugyo-shinkoku-keisan/">副業の確定申告 要否チェッカー</a> ／
+      <a href="https://webtools-labs.com/nencho-kanpu-keisan/">年末調整 還付金シミュレーター</a> ／
+      <a href="https://webtools-labs.com/iryouhi-koujo-keisan/">医療費控除 計算ツール</a> ／
+      <a href="https://webtools-labs.com/saitei-chingin-checker/">最低賃金チェッカー</a> ／
+      <a href="https://webtools-labs.com/frima-kakuteishinkoku-checker/">フリマの確定申告 要否チェッカー</a> ／
+      <a href="https://webtools-labs.com/ideco-setsuzei-keisan/">iDeCo（確定拠出年金）節税シミュレーター</a> ／
+      <a href="https://webtools-labs.com/tokutei-shinzoku-keisan/">特定親族特別控除 計算ツール</a> ／
+      <a href="https://webtools-labs.com/taishokubi-hikaku-keisan/">退職日シミュレーター（月末退職と前日退職の比較）</a> ／
+      <a href="https://webtools-labs.com/seimei-hoken-koujo-keisan/">生命保険料控除 計算ツール</a> ／
+      <a href="https://webtools-labs.com/furusato-nozei-keisan/">ふるさと納税 上限額シミュレーター</a> ／
+      <a href="https://webtools-labs.com/hokenryo-koujo-shinkokusho/">保険料控除申告書 計算ツール</a> ／
+      <a href="https://webtools-labs.com/haigusha-koujo-keisan/">配偶者控除 計算ツール</a> ／
+      <a href="https://webtools-labs.com/bonus-tedori-keisan/">賞与手取り計算ツール</a>
+    </p>
+    <p>当サイトは広告を掲載する場合があります。</p>
+    <p><a href="https://webtools-labs.com/about/">運営者情報</a> ／ <a href="https://webtools-labs.com/privacy/">プライバシーポリシー</a> ／ <a href="https://webtools-labs.com/contact/">お問い合わせ</a></p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  function yen(n) { return Math.round(n).toLocaleString('ja-JP') + '円'; }
+
+  // 給与所得控除後の金額（660万円未満は4,000円単位。令和8年分は最低74万円、令和7年分は最低65万円）
+  function salaryIncome(pay, year) {
+    if (pay <= 0) return 0;
+    if (pay < 6600000) {
+      var flatMax = year === 8 ? 2199999 : 1899999;
+      var flat = year === 8 ? 740000 : 650000;
+      if (pay <= flatMax) return Math.max(0, pay - flat);
+      var a = Math.floor(pay / 4000) * 4000;
+      if (a < 3600000) return Math.floor(a * 0.7 - 80000);
+      return Math.floor(a * 0.8 - 440000);
+    }
+    if (pay <= 8500000) return Math.floor(pay * 0.9 - 1100000);
+    return pay - 1950000;
+  }
+
+  // 基礎控除（国税庁タックスアンサーNo.1199）
+  function basicDeduction(total, year) {
+    var tiers = year === 8
+      ? [[4890000, 1040000], [6550000, 670000], [23500000, 620000]]
+      : [[1320000, 950000], [3360000, 880000], [4890000, 680000], [6550000, 630000], [23500000, 580000]];
+    tiers = tiers.concat([[24000000, 480000], [24500000, 320000], [25000000, 160000]]);
+    for (var i = 0; i < tiers.length; i++) if (total <= tiers[i][0]) return tiers[i][1];
+    return 0;
+  }
+
+  function calcTax(taxable) {
+    var t = Math.max(0, Math.floor(taxable / 1000) * 1000);
+    var b = [[1950000, 0.05, 0], [3300000, 0.10, 97500], [6950000, 0.20, 427500], [9000000, 0.23, 636000], [18000000, 0.33, 1536000], [40000000, 0.40, 2796000], [Infinity, 0.45, 4796000]];
+    for (var i = 0; i < b.length; i++) if (t <= b[i][0]) return { taxable: t, tax: Math.max(0, Math.floor(t * b[i][1] - b[i][2] + 1e-6)), rate: b[i][1] };
+  }
+
+  var yearSel = document.getElementById('year');
+  var payIn = document.getElementById('pay');
+  var afterIn = document.getElementById('afterDed');
+  var dedIn = document.getElementById('deductions');
+  var whIn = document.getElementById('withheld');
+  var housingIn = document.getElementById('housing');
+  var cards = document.getElementById('summaryCards');
+  var note = document.getElementById('checkNote');
+  var body = document.getElementById('resultBody');
+
+  function num(el) { return el.value === '' ? null : Math.max(0, Number(el.value) || 0); }
+
+  function render() {
+    var year = Number(yearSel.value);
+    var pay = num(payIn) || 0;
+    var calcSal = salaryIncome(pay, year);
+    var enteredSal = num(afterIn);
+    var sal = enteredSal === null ? calcSal : enteredSal;
+    var ded = num(dedIn) || 0;
+    var housing = num(housingIn) || 0;
+    var r = calcTax(sal - ded);
+    var afterHousing = Math.max(0, r.tax - housing);
+    var finalTax = Math.floor(Math.floor(afterHousing * 1.021 + 1e-6) / 100) * 100;
+    var wh = num(whIn);
+    var basic = basicDeduction(sal, year);
+
+    var rows = [
+      ['支払金額', pay],
+      ['給与所得控除後の金額' + (enteredSal === null ? '（自動計算）' : '（入力値）'), sal],
+      ['所得控除の額の合計額', -ded],
+      ['課税所得（1,000円未満切り捨て）', r.taxable],
+      ['所得税（税率' + Math.round(r.rate * 100) + '%）', r.tax]
+    ];
+    if (housing > 0) rows.push(['住宅借入金等特別控除', -Math.min(housing, r.tax)]);
+    rows.push(['源泉徴収税額（×102.1%、100円未満切り捨て）', finalTax]);
+    body.innerHTML = rows.map(function (x, i) {
+      var last = i === rows.length - 1;
+      return '<tr class="' + (last ? 'best' : '') + '"><td>' + x[0] + '</td><td class="num">' + (x[1] < 0 ? '－' + yen(-x[1]) : yen(x[1])) + '</td></tr>';
+    }).join('');
+
+    cards.innerHTML =
+      '<div class="summary-card"><div class="label">計算上の源泉徴収税額</div><div class="value">' + yen(finalTax) + '</div><div class="sub">' + (year === 8 ? '令和8年分' : '令和7年分') + 'のルールで計算</div></div>' +
+      '<div class="summary-card"><div class="label">基礎控除の額（目安）</div><div class="value">' + yen(basic) + '</div><div class="sub">所得控除の合計に含まれる金額</div></div>';
+
+    var msgs = [];
+    if (enteredSal !== null && pay > 0 && Math.abs(enteredSal - calcSal) > 0) {
+      msgs.push('「給与所得控除後の金額」が計算上の ' + yen(calcSal) + ' と ' + yen(Math.abs(enteredSal - calcSal)) + ' ずれています。所得金額調整控除がある場合や、年分の選択・入力の誤りがないか確認してください。');
+    }
+    if (wh !== null && pay > 0) {
+      var diff = wh - finalTax;
+      if (diff === 0) {
+        msgs.unshift('✅ 源泉徴収税額は計算どおりです。年末調整は正しく行われていると考えられます。');
+      } else {
+        msgs.unshift('⚠️ 源泉徴収票の源泉徴収税額（' + yen(wh) + '）は、計算上の金額より ' + yen(Math.abs(diff)) + (diff > 0 ? ' 多い' : ' 少ない') + 'です。' +
+          (diff > 0 ? '年の途中で退職して年末調整を受けていない場合などは、確定申告をすると差額が戻ってくる可能性があります。' : '住宅ローン控除や前職分の合算などが反映されていないか確認してください。') +
+          'よくある原因は下の「よくある質問」を参考にしてください。');
+      }
+    }
+    if (msgs.length) { note.innerHTML = msgs.join('<br>'); note.style.display = ''; } else { note.style.display = 'none'; }
+
+    var text = '源泉徴収票の所得税が合っているか確認できるツール';
+    var url = 'https://webtools-labs.com/gensen-choshuhyo-checker/';
+    document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+    document.getElementById('shareLine').href = 'https://line.me/R/msg/text/?' + encodeURIComponent(text + '\n' + url);
+    document.getElementById('shareHatena').href = 'https://b.hatena.ne.jp/entry/panel/?url=' + encodeURIComponent(url);
+  }
+
+  [payIn, afterIn, dedIn, whIn, housingIn].forEach(function (el) { el.addEventListener('input', render); });
+  yearSel.addEventListener('change', render);
+  render();
+
+  var WEB3FORMS_ACCESS_KEY = '4551c9fd-4327-4bd4-97e0-8b93d85fd077';
+  var contactForm = document.getElementById('contactForm');
+  var contactStatus = document.getElementById('contactStatus');
+  var contactSubmit = document.getElementById('contactSubmit');
+
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    contactSubmit.disabled = true;
+    contactStatus.textContent = '送信中...';
+    contactStatus.className = 'contact-status';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: '源泉徴収票チェッカーへのお問い合わせ',
+        email: document.getElementById('contactEmail').value || 'noreply@example.com',
+        message: document.getElementById('contactMessage').value
+      })
+    }).then(function (res) { return res.json(); }).then(function (data) {
+      contactSubmit.disabled = false;
+      if (data.success) {
+        contactStatus.textContent = '送信しました。ありがとうございます！';
+        contactStatus.className = 'contact-status ok';
+        contactForm.reset();
+      } else {
+        contactStatus.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+        contactStatus.className = 'contact-status err';
+      }
+    }).catch(function () {
+      contactSubmit.disabled = false;
+      contactStatus.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+      contactStatus.className = 'contact-status err';
+    });
+  });
+})();
+</script>
+</body>
+</html>
