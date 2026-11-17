@@ -213,7 +213,7 @@ tr.best { background: var(--best-bg); }
 tr.na td { color: var(--muted); }
 
 .ref-table { overflow-x: auto; }
-.ref-table table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 460px; }
+.ref-table table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 0; }
 .ref-table th, .ref-table td { padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--line); text-align: left; }
 .ref-table td.num { font-variant-numeric: tabular-nums; text-align: right; }
 
@@ -300,6 +300,15 @@ footer.site-footer a { color: var(--accent); }
 .related-tools a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .related-tools a:hover { text-decoration: underline; }
 .related-tools li p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.85rem; }
+/* スマホで表が画面からはみ出さないように（2026-11-17） */
+@media (max-width: 600px) {
+  .ref-table table { font-size: 0.8rem; }
+  .ref-table th, .ref-table td { padding: 0.45rem 0.3rem; }
+  .ref-table th, .ref-table td:first-child { white-space: normal; }
+  .ref-table td.nw { white-space: nowrap; }
+  .ref-table th:first-child, .ref-table td:first-child { min-width: 5em; position: sticky; left: 0; z-index: 1; background: var(--bg); box-shadow: 1px 0 0 var(--line); }
+  .ref-table tr.best td:first-child, .ref-table tr.total td:first-child, .ref-table tr.next td:first-child, .ref-table tr.highlight td:first-child { background: var(--best-bg, var(--bg)); }
+}
 </style>
 </head>
 <body>
@@ -408,12 +417,12 @@ footer.site-footer a { color: var(--accent); }
       <table>
         <thead><tr><th>項目</th><th class="num">金額</th></tr></thead>
         <tbody>
-          <tr><td>支払金額</td><td class="num">4,000,000円</td></tr>
-          <tr><td>給与所得控除後の金額</td><td class="num">2,760,000円</td></tr>
-          <tr><td>所得控除の額の合計額（社会保険料588,000円＋基礎控除1,040,000円）</td><td class="num">1,628,000円</td></tr>
-          <tr><td>課税所得</td><td class="num">1,132,000円</td></tr>
-          <tr><td>所得税（5%）</td><td class="num">56,600円</td></tr>
-          <tr class="best"><td>源泉徴収税額（×102.1%、100円未満切り捨て）</td><td class="num">57,700円</td></tr>
+          <tr><td>支払金額</td><td class="num nw">4,000,000円</td></tr>
+          <tr><td>給与所得控除後の金額</td><td class="num nw">2,760,000円</td></tr>
+          <tr><td>所得控除の額の合計額（社会保険料588,000円＋基礎控除1,040,000円）</td><td class="num nw">1,628,000円</td></tr>
+          <tr><td>課税所得</td><td class="num nw">1,132,000円</td></tr>
+          <tr><td>所得税（5%）</td><td class="num nw">56,600円</td></tr>
+          <tr class="best"><td>源泉徴収税額（×102.1%、100円未満切り捨て）</td><td class="num nw">57,700円</td></tr>
         </tbody>
       </table>
     </div>
@@ -427,16 +436,16 @@ footer.site-footer a { color: var(--accent); }
       <table style="white-space:nowrap">
         <thead><tr><th>支払金額</th><th class="num">給与所得控除後<br>（令和8年分）</th><th class="num">所得控除の合計<br>（令和8年分）</th><th class="num">源泉徴収税額<br>令和7年分</th><th class="num">源泉徴収税額<br>令和8年分</th></tr></thead>
         <tbody>
-          <tr><td>150万円</td><td class="num">760,000円</td><td class="num">1,260,500円</td><td class="num">0円</td><td class="num">0円</td></tr>
-          <tr><td>200万円</td><td class="num">1,260,000円</td><td class="num">1,334,000円</td><td class="num">3,800円</td><td class="num">0円</td></tr>
-          <tr><td>250万円</td><td class="num">1,670,000円</td><td class="num">1,407,500円</td><td class="num">21,500円</td><td class="num">13,300円</td></tr>
-          <tr><td>300万円</td><td class="num">2,020,000円</td><td class="num">1,481,000円</td><td class="num">35,600円</td><td class="num">27,500円</td></tr>
-          <tr><td>400万円</td><td class="num">2,760,000円</td><td class="num">1,628,000円</td><td class="num">65,900円</td><td class="num">57,700円</td></tr>
-          <tr><td>500万円</td><td class="num">3,560,000円</td><td class="num">1,775,000円</td><td class="num">119,400円</td><td class="num">91,100円</td></tr>
-          <tr><td>600万円</td><td class="num">4,360,000円</td><td class="num">1,922,000円</td><td class="num">186,100円</td><td class="num">149,300円</td></tr>
-          <tr><td>700万円</td><td class="num">5,200,000円</td><td class="num">1,699,000円</td><td class="num">286,500円</td><td class="num">278,400円</td></tr>
-          <tr><td>800万円</td><td class="num">6,100,000円</td><td class="num">1,846,000円</td><td class="num">440,300円</td><td class="num">432,100円</td></tr>
-          <tr><td>1000万円</td><td class="num">8,050,000円</td><td class="num">2,090,000円</td><td class="num">788,700円</td><td class="num">780,500円</td></tr>
+          <tr><td>150万円</td><td class="num nw">760,000円</td><td class="num nw">1,260,500円</td><td class="num nw">0円</td><td class="num nw">0円</td></tr>
+          <tr><td>200万円</td><td class="num nw">1,260,000円</td><td class="num nw">1,334,000円</td><td class="num nw">3,800円</td><td class="num nw">0円</td></tr>
+          <tr><td>250万円</td><td class="num nw">1,670,000円</td><td class="num nw">1,407,500円</td><td class="num nw">21,500円</td><td class="num nw">13,300円</td></tr>
+          <tr><td>300万円</td><td class="num nw">2,020,000円</td><td class="num nw">1,481,000円</td><td class="num nw">35,600円</td><td class="num nw">27,500円</td></tr>
+          <tr><td>400万円</td><td class="num nw">2,760,000円</td><td class="num nw">1,628,000円</td><td class="num nw">65,900円</td><td class="num nw">57,700円</td></tr>
+          <tr><td>500万円</td><td class="num nw">3,560,000円</td><td class="num nw">1,775,000円</td><td class="num nw">119,400円</td><td class="num nw">91,100円</td></tr>
+          <tr><td>600万円</td><td class="num nw">4,360,000円</td><td class="num nw">1,922,000円</td><td class="num nw">186,100円</td><td class="num nw">149,300円</td></tr>
+          <tr><td>700万円</td><td class="num nw">5,200,000円</td><td class="num nw">1,699,000円</td><td class="num nw">286,500円</td><td class="num nw">278,400円</td></tr>
+          <tr><td>800万円</td><td class="num nw">6,100,000円</td><td class="num nw">1,846,000円</td><td class="num nw">440,300円</td><td class="num nw">432,100円</td></tr>
+          <tr><td>1000万円</td><td class="num nw">8,050,000円</td><td class="num nw">2,090,000円</td><td class="num nw">788,700円</td><td class="num nw">780,500円</td></tr>
         </tbody>
       </table>
     </div>

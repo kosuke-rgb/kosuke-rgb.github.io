@@ -208,7 +208,7 @@ tr.best { background: var(--best-bg); }
 tr.na td { color: var(--muted); }
 
 .ref-table { overflow-x: auto; }
-.ref-table table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 460px; }
+.ref-table table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 0; }
 .ref-table th, .ref-table td { padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--line); text-align: left; }
 .ref-table td.num { font-variant-numeric: tabular-nums; text-align: right; }
 
@@ -301,6 +301,15 @@ footer.site-footer a { color: var(--accent); }
 .checklist input { margin-top: 0.35rem; }
 .form-result { margin-top: 1rem; }
 .form-result li { margin-bottom: 0.5rem; }
+/* スマホで表が画面からはみ出さないように（2026-11-17） */
+@media (max-width: 600px) {
+  .ref-table table { font-size: 0.8rem; }
+  .ref-table th, .ref-table td { padding: 0.45rem 0.3rem; }
+  .ref-table th, .ref-table td:first-child { white-space: normal; }
+  .ref-table td.nw { white-space: nowrap; }
+  .ref-table th:first-child, .ref-table td:first-child { min-width: 5em; position: sticky; left: 0; z-index: 1; background: var(--bg); box-shadow: 1px 0 0 var(--line); }
+  .ref-table tr.best td:first-child, .ref-table tr.total td:first-child, .ref-table tr.next td:first-child, .ref-table tr.highlight td:first-child { background: var(--best-bg, var(--bg)); }
+}
 </style>
 </head>
 <body>
@@ -320,9 +329,9 @@ footer.site-footer a { color: var(--accent); }
         <thead><tr><th>項目</th><th>令和7年分（2025年）</th><th>令和8年分（2026年）</th></tr></thead>
         <tbody>
           <tr><td>基礎控除（合計所得489万円以下）</td><td>68万〜95万円（所得により段階的）</td><td><strong>104万円</strong></td></tr>
-          <tr><td>基礎控除（489万円超655万円以下）</td><td>63万円</td><td>67万円</td></tr>
-          <tr><td>基礎控除（655万円超2,350万円以下）</td><td>58万円</td><td>62万円</td></tr>
-          <tr><td>給与所得控除の最低額</td><td>65万円</td><td><strong>74万円</strong></td></tr>
+          <tr><td>基礎控除（489万円超655万円以下）</td><td class="num nw">63万円</td><td class="num nw">67万円</td></tr>
+          <tr><td>基礎控除（655万円超2,350万円以下）</td><td class="num nw">58万円</td><td class="num nw">62万円</td></tr>
+          <tr><td>給与所得控除の最低額</td><td class="num nw">65万円</td><td><strong>74万円</strong></td></tr>
           <tr><td>本人に所得税がかかり始める給与収入</td><td>160万円超</td><td><strong>178万円超</strong></td></tr>
           <tr><td>家族が扶養控除・配偶者控除の対象になる給与収入</td><td>123万円以下</td><td><strong>136万円以下</strong></td></tr>
           <tr><td>19〜22歳の子の特定親族特別控除が残る給与収入</td><td>約188万円まで</td><td><strong>約197万円まで</strong></td></tr>
