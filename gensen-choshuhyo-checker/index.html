@@ -309,6 +309,17 @@ footer.site-footer a { color: var(--accent); }
   .ref-table th:first-child, .ref-table td:first-child { min-width: 5em; position: sticky; left: 0; z-index: 1; background: var(--bg); box-shadow: 1px 0 0 var(--line); }
   .ref-table tr.best td:first-child, .ref-table tr.total td:first-child, .ref-table tr.next td:first-child, .ref-table tr.highlight td:first-child { background: var(--best-bg, var(--bg)); }
 }
+/* スマホでは横長の早見表をカード表示に（2026-11-23） */
+@media (max-width: 600px) {
+  .ref-table table.stack, .ref-table table.stack tbody, .ref-table table.stack tr, .ref-table table.stack td { display: block; width: auto; }
+  .ref-table table.stack thead { display: none; }
+  .ref-table table.stack tr { border: 1px solid var(--line); border-radius: 8px; margin: 0 0 0.6rem; padding: 0.35rem 0.7rem; }
+  .ref-table table.stack td { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; border: 0; padding: 0.22rem 0; text-align: right; position: static; box-shadow: none; min-width: 0; background: none; font-size: 0.86rem; white-space: normal; }
+  .ref-table table.stack td > span { text-align: right; white-space: nowrap; }
+  .ref-table table.stack td::before { content: attr(data-label); color: var(--muted); text-align: left; font-weight: 400; flex: 1 1 auto; }
+  .ref-table table.stack td:first-child { display: block; text-align: left; font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: 0.35rem; margin-bottom: 0.2rem; }
+  .ref-table table.stack td:first-child::before { content: none; }
+}
 </style>
 </head>
 <body>
@@ -433,19 +444,19 @@ footer.site-footer a { color: var(--accent); }
     <h2>年収別 源泉徴収税額の早見表（令和7年分と令和8年分）</h2>
     <p>独身・扶養なし・40歳未満で、所得控除が社会保険料と基礎控除だけの場合の目安です。令和8年分は基礎控除と給与所得控除が引き上げられたため、同じ年収でも所得税が少なくなります。</p>
     <div class="ref-table" style="overflow-x:auto">
-      <table style="white-space:nowrap">
+      <table class="stack" style="white-space:nowrap">
         <thead><tr><th>支払金額</th><th class="num">給与所得控除後<br>（令和8年分）</th><th class="num">所得控除の合計<br>（令和8年分）</th><th class="num">源泉徴収税額<br>令和7年分</th><th class="num">源泉徴収税額<br>令和8年分</th></tr></thead>
         <tbody>
-          <tr><td>150万円</td><td class="num nw">760,000円</td><td class="num nw">1,260,500円</td><td class="num nw">0円</td><td class="num nw">0円</td></tr>
-          <tr><td>200万円</td><td class="num nw">1,260,000円</td><td class="num nw">1,334,000円</td><td class="num nw">3,800円</td><td class="num nw">0円</td></tr>
-          <tr><td>250万円</td><td class="num nw">1,670,000円</td><td class="num nw">1,407,500円</td><td class="num nw">21,500円</td><td class="num nw">13,300円</td></tr>
-          <tr><td>300万円</td><td class="num nw">2,020,000円</td><td class="num nw">1,481,000円</td><td class="num nw">35,600円</td><td class="num nw">27,500円</td></tr>
-          <tr><td>400万円</td><td class="num nw">2,760,000円</td><td class="num nw">1,628,000円</td><td class="num nw">65,900円</td><td class="num nw">57,700円</td></tr>
-          <tr><td>500万円</td><td class="num nw">3,560,000円</td><td class="num nw">1,775,000円</td><td class="num nw">119,400円</td><td class="num nw">91,100円</td></tr>
-          <tr><td>600万円</td><td class="num nw">4,360,000円</td><td class="num nw">1,922,000円</td><td class="num nw">186,100円</td><td class="num nw">149,300円</td></tr>
-          <tr><td>700万円</td><td class="num nw">5,200,000円</td><td class="num nw">1,699,000円</td><td class="num nw">286,500円</td><td class="num nw">278,400円</td></tr>
-          <tr><td>800万円</td><td class="num nw">6,100,000円</td><td class="num nw">1,846,000円</td><td class="num nw">440,300円</td><td class="num nw">432,100円</td></tr>
-          <tr><td>1000万円</td><td class="num nw">8,050,000円</td><td class="num nw">2,090,000円</td><td class="num nw">788,700円</td><td class="num nw">780,500円</td></tr>
+          <tr><td data-label="支払金額">150万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>760,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>1,260,500円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>0円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>0円</span></td></tr>
+          <tr><td data-label="支払金額">200万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>1,260,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>1,334,000円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>3,800円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>0円</span></td></tr>
+          <tr><td data-label="支払金額">250万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>1,670,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>1,407,500円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>21,500円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>13,300円</span></td></tr>
+          <tr><td data-label="支払金額">300万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>2,020,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>1,481,000円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>35,600円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>27,500円</span></td></tr>
+          <tr><td data-label="支払金額">400万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>2,760,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>1,628,000円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>65,900円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>57,700円</span></td></tr>
+          <tr><td data-label="支払金額">500万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>3,560,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>1,775,000円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>119,400円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>91,100円</span></td></tr>
+          <tr><td data-label="支払金額">600万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>4,360,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>1,922,000円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>186,100円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>149,300円</span></td></tr>
+          <tr><td data-label="支払金額">700万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>5,200,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>1,699,000円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>286,500円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>278,400円</span></td></tr>
+          <tr><td data-label="支払金額">800万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>6,100,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>1,846,000円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>440,300円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>432,100円</span></td></tr>
+          <tr><td data-label="支払金額">1000万円</td><td class="num nw" data-label="給与所得控除後（令和8年分）"><span>8,050,000円</span></td><td class="num nw" data-label="所得控除の合計（令和8年分）"><span>2,090,000円</span></td><td class="num nw" data-label="源泉徴収税額（令和7年分）"><span>788,700円</span></td><td class="num nw" data-label="源泉徴収税額（令和8年分）"><span>780,500円</span></td></tr>
         </tbody>
       </table>
     </div>
